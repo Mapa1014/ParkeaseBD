@@ -1,0 +1,151 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ParkeaseBD.Site" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        <asp:ContentPlaceHolder ID="title" runat="server">
+        </asp:ContentPlaceHolder>
+    </title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Strike&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="html/views/style/style.css">
+</head>
+<body>
+
+    <form id="form1" runat="server">
+        <nav class="navbar">
+            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/html/images/logo2.png" Width="200px" />
+            <div class="nav-center">
+                <asp:HyperLink runat="server" ID="Inicio" NavigateUrl="~/inicio.aspx" Text="Inicio" CssClass="nav-link" />
+
+                <div class="dropdown">
+                    <asp:HyperLink ID="Parqueate" runat="server" CssClass="nav-link">Parqueate</asp:HyperLink>
+                    <div class="dropdown-content">
+                        <asp:HyperLink runat="server" ID="Reserva" NavigateUrl="~/reservas/reservas.aspx" Text="Reserva" CssClass="nav-link" />
+                        <asp:HyperLink runat="server" ID="Facturación" NavigateUrl="~/reservas/reservas.aspx" Text="Facturación" CssClass="nav-link" />
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <asp:HyperLink ID="Servicios" runat="server" CssClass="nav-link">Servicios</asp:HyperLink>
+                    <div class="dropdown-content">
+                        <asp:HyperLink runat="server" ID="Lavadero" NavigateUrl="#" Text="Lavadero" CssClass="nav-link" />
+                        <asp:HyperLink runat="server" ID="GestionProd" NavigateUrl="#" Text="Gestión productos" CssClass="nav-link" />
+                        <asp:HyperLink runat="server" ID="RegistroIng" NavigateUrl="#" Text="Registro ingresos" CssClass="nav-link" />
+                    </div>
+                </div>
+
+
+                <div class="dropdown">
+                    <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="#" CssClass="nav-link">Conócenos</asp:HyperLink>
+                    <div class="dropdown-content">
+                        <asp:HyperLink runat="server" ID="Nosotros" NavigateUrl="#" Text="Nosotros" CssClass="nav-link" />
+                        <asp:HyperLink runat="server" ID="Contactanos" NavigateUrl="#" Text="Contactanos" CssClass="nav-link" />
+
+                    </div>
+                </div>
+            </div>
+            <div class="nav-right">
+                <asp:Button ID="Button1" runat="server" Text="Ingresa" CssClass="ingreso" onClick="BtnLogout_Click"/>
+                <asp:Button ID="Button2" runat="server" Text="Registrate" CssClass="ingreso" />
+                <asp:Button ID="Button3" runat="server" Text="Salir" CssClass="ingreso" OnClick="BtnLogout_Click"  onClientClick="return salirAplicacion();"/>
+            </div>
+
+        </nav>
+        <br />
+        <div>
+            <h1 style="text-align: end; font-size: 15px; padding-block-end: 10px">EL usuario <%: Session["email"] %> inicio sesión</h1>
+        </div>
+        <br />
+        <main>
+            <asp:ContentPlaceHolder ID="main" runat="server">
+            </asp:ContentPlaceHolder>
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </main>
+        <br />
+        <footer class="footer">
+            <div class="body-footer">
+                <div class="container1">
+                    <div class="footer-content">
+                        <div class="footer-links">
+                            <h4 class="h4"><b>CONTACTO</b></h4>
+                            <ul>
+                                <li class="li-footer">PBX</li>
+                                <li><a href="tel:+57(1)6864444">+ 57 (1)6864444</a></li>
+                                <li class="li-footer">Servicio al cliente</li>
+                                <li><a href="+ 573142307864">+ 57 3142307864</a></li>
+                                <li>
+                                    <a href="mailto:ejemplo@correo.com?subject=Hola&body=Mensaje%20aquí">parkease@gmail</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="footer-links">
+                            <h4><b>NOSOTROS</b></h4>
+                            <ul>
+                                <li class="li-footer">Documentación</li>
+                                <li class="li-footer">Misíon</li>
+                                <li class="li-footer">Visión</li>
+                                <li class="li-footer"><a href="views/mapa.html">Mapa de navegación</a></li>
+                                <li class="li-footer"><a href="views/error500.html">Error 500</a></li>
+                                <li class="li-footer"><a href="views/error400.html">Error 404</a></li>
+
+                            </ul>
+                        </div>
+                        <div class="footer-links">
+                            <h4><b>DESCARGA LA APP</b></h4>
+
+                            <div class="download-app">
+                                <a href="https://www.apple.com/store">
+                                    <i class="fa-brands fa-apple"></i>
+                                    <span class="span-footer">App store</span>
+                                </a>
+                                <a href="https://play.google.com/store/games?device=windows&pli=1ap">
+                                    <i class="fa-brands fa-android"></i>
+                                    <span class="span-footer">Play store</span>
+                                </a>
+                            </div>
+                            <br>
+                        </div>
+                        <div class="footer-links">
+                            <h4><b>SUSCRIBETE</b></h4>
+                            <div class="input-send">
+                                <input class="email" type="text" placeholder="Correo electrónico">
+                                <button class="button">Enviar</button>
+                            </div>
+                            <br>
+                            <div class="social-link">
+                                <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                                <a href="https://x.com/__x?mx=2"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <br>
+                <p class="p-footer">
+                    &#169 Derechos registrados ParkEase | 2024.
+                </p>
+            </div>
+        </footer>
+
+    </form>
+   <!-- </<script>
+        function salirAplicacion() {
+            var form = document.getElementById('//<% //form1.ClientID %>');
+            form.reset();
+            return true;
+        }
+    </script> -->
+</body>
+</html>
